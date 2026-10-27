@@ -1,0 +1,116 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    background-color: #000;
+    color: #00ffcc;
+    font-family: 'Courier New', Courier, monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+/* Terminal Container */
+.terminal-container {
+    width: 90%;
+    max-width: 800px;
+    height: 80%;
+    border: 2px solid #005544;
+    box-shadow: 0 0 20px #003322;
+    border-radius: 8px;
+    padding: 20px;
+    position: relative;
+    background-color: #020b08;
+    display: flex;
+    flex-direction: column;
+}
+/* Retro Scanline Overlay */
+.terminal-container::before {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    z-index: 10;
+    background-size: 100% 4px, 6px 100%;
+    pointer-events: none;
+}
+/* Output History Box */
+.output-history {
+    flex: 1;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    margin-bottom: 10px;
+    padding-right: 5px;
+    font-size: 1.1rem;
+    line-height: 1.4;
+}
+/* Scrollbar Styling */
+.output-history::-webkit-scrollbar {
+    width: 6px;
+}
+.output-history::-webkit-scrollbar-thumb {
+    background: #005544;
+    border-radius: 3px;
+}
+/* Input Line Form */
+.input-line {
+    display: flex;
+    align-items: center;
+    border-top: 1px solid #003322;
+    padding-top: 10px;
+}
+.prompt-symbol {
+    font-weight: bold;
+    margin-right: 10px;
+    font-size: 1.2rem;
+    user-select: none;
+}
+.terminal-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: #00ffcc;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.1rem;
+    outline: none;
+    caret-color: #00ffcc;
+}
+/* Popup Frame for 'browser' command */
+.popup-window {
+    position: absolute;
+    top: 10%; left: 10%; width: 80%; height: 80%;
+    background: #111;
+    border: 2px solid #00ffcc;
+    z-index: 20;
+    display: none;
+    flex-direction: column;
+    box-shadow: 0 0 30px rgba(0,255,204,0.3);
+}
+.popup-header {
+    background: #005544;
+    color: #fff;
+    padding: 5px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+}
+.popup-close {
+    cursor: pointer;
+    background: #aa0000;
+    border: none;
+    color: white;
+    font-weight: bold;
+    padding: 2px 8px;
+}
+.popup-body {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+    font-size: 0.85rem;
+    color: #33ff33;
+    background: #000;
+}
